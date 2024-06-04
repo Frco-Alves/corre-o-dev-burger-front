@@ -1,11 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { ToastContainer } from 'react-toastify';
+
+import Routes from './routes/routes';
 import GlobalStyles from './styles/globalStyles';
-import { Login } from './containers/Login';
+import { UserProvider } from './hooks/UserContext';
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Login />
+  <>
+    <UserProvider>
+      <Routes />
+    </UserProvider>
+    <ToastContainer autoClose={2000} theme='dark' />
     <GlobalStyles />
-  </React.StrictMode>,
+  </>,
 )
