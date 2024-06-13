@@ -9,14 +9,13 @@ import * as Yup from 'yup';
 import Logo from '../../assets/logo.svg';
 import { LeftContainer } from '../Login/styles';
 import api from '../../services/api';
-import { Button } from '../../components';
+import { Button, ErrorMessage } from '../../components';
 import {
     Container,
     Form,
     InputContainer,
     RightContainer,
-    Title,
-    ErrorMessage,
+    Title
 } from './styles';
 
 export function Register() {
@@ -114,7 +113,7 @@ export function Register() {
             </RightContainer>
         </Container>
     )
-};
+}
 
 
 

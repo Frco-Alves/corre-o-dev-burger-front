@@ -1,21 +1,28 @@
 import React from "react";
-import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
-import {Home, Products, Register, Login, Cart} from "../containers";
+import {Home, Products, Register, Login, Cart, Admin} from "../containers";
+import paths from '../constants/paths';
 import PrivateRoute from './private-route';
 
-function Routess(){
+function Routes(){
   return (
     <Router>
-        <Routes>
+        <Switch>
             <Route Component={Login} path="/login" />
             <Route Component={Register} path="/cadastro" />
-            <Route Component={Home} path="/" />
-            <Route Component={Products} path="/produtos" />
-            <Route Component={Cart} path="/carrinho" /> 
-        </Routes>
+
+            <PrivateRoute Component exact ={Home} path="/" />
+            <PrivateRoute Component={Products} path="/produtos" />
+            <PrivateRoute Component={Cart} path="/carrinho" /> 
+
+            <PrivateRoute Component={Admin} path={paths.Order} isAdmin/> 
+            <PrivateRoute Component={Admin} path={paths.Products} isAdmin/> 
+            <PrivateRoute Component={Admin} path={paths.NewProduct} isAdmin/>
+            <PrivateRoute Component={Admin} path={paths.EditProduct} isAdmin/>
+        </Switch>
     </Router>
   )
 }
 
-export default Routess;
+export default Routes;

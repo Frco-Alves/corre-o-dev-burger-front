@@ -69,4 +69,9 @@ cursor: pointer;
 &:hover{
     opacity: 0.7;
 }
+
+text-decoration: none;
+display: flex;
+justify-content: center;
+align-items: center;
 `

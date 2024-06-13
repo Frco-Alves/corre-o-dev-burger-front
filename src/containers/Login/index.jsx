@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -12,18 +12,17 @@ import { useUser } from '../../hooks/UserContext';
 import Logo from '../../assets/logo.svg';
 import { LeftContainer } from '../Login/styles';
 import { RightContainer } from '../Login/styles'
-import { Button } from '../../components';
+import { Button, ErrorMessage } from '../../components';
 import api from '../../services/api';
 import {
     Container,
     Form,
     InputContainer,
-    Title,
-    ErrorMessage,
+    Title
 } from './styles';
 
 export function Login() {
-    const history = useNavigate
+    const history = useHistory
 
     const { putUserData } = useUser()
     const schema = Yup
@@ -61,6 +60,11 @@ export function Login() {
         putUserData(data)
 
         setTimeout(() => {
+            if (data.admin) {
+                history.push('/pedidos')
+            }else {
+                history.push('/')
+            }
             history.push('/')
         }, 1000);
 
@@ -100,4 +104,4 @@ export function Login() {
             </RightContainer>
         </Container>
     )
-};
+}
