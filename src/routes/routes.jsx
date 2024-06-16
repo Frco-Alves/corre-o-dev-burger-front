@@ -7,6 +7,7 @@ import PrivateRoute from './private-route';
 
 function Routes(){
   return (
+    
     <Router>
         <Switch>
             <Route Component={Login} path="/login" />
@@ -21,7 +22,9 @@ function Routes(){
             <PrivateRoute Component={Admin} path={paths.NewProduct} isAdmin/>
             <PrivateRoute Component={Admin} path={paths.EditProduct} isAdmin/>
         </Switch>
+        
     </Router>
+    
   )
 }
 
